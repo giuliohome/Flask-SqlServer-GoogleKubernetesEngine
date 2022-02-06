@@ -23,4 +23,5 @@ RUN pip install -r requirements.txt
 #Use this one if you have proxy setting
 # RUN pip --proxy http://[proxy:port] install -r requirements.txt
 # CMD "sh" 
+EXPOSE 5000
 CMD ["python","main.py"]
