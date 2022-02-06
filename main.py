@@ -1,9 +1,12 @@
 import pyodbc
-print("About to run C/I build trigger")
+print("About to conn")
 #Add your own SQL Server IP address, PORT, UID, PWD and Database
 conn = pyodbc.connect(
-    'DRIVER={FreeTDS};SERVER=10.29.112.3;PORT=1433;CHARSET=UTF-16;DATABASE=fisrtdb;UID=firstuser;PWD=Giulio2022', autocommit=True)
-cur = conn.cursor()
+        'DRIVER={FreeTDS};SERVER=34.134.105.142;PORT=1433;DATABASE=firstdb;UID=sqlserver;PWD=Giulio2022', autocommit=False)
+
+conn.setencoding('utf-8')
+
+cursor = conn.cursor()
 
 cursor.execute('''
 		CREATE TABLE products (
@@ -29,5 +32,5 @@ conn.commit()
 #This is just an example
 
 print('Should have inserted the rows above')
-cur.close()
+cursor.close()
 conn.close()
