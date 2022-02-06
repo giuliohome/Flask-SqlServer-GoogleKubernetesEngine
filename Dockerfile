@@ -21,4 +21,5 @@ Setup = /usr/lib/x86_64-linux-gnu/odbc/libtdsS.so" >> /etc/odbcinst.ini
 #Pip command without proxy setting
 RUN pip install -r requirements.txt
 #Use this one if you have proxy setting
-# RUN pip --proxy http://[proxy:port] install -r requirements.txtCMD ["python","-i","main.py"]
+# RUN pip --proxy http://[proxy:port] install -r requirements.txt
+CMD ["python","-i","main.py"]
