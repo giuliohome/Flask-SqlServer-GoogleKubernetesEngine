@@ -2,7 +2,7 @@ import pyodbc
 print("About to insert Hagi:")
 #Add your own SQL Server IP address, PORT, UID, PWD and Database
 conn = pyodbc.connect(
-    'DRIVER={FreeTDS};SERVER=10.29.112.3 ;DATABASE=fisrtdb;UID=giulio;PWD=2022', autocommit=True)
+    'DRIVER={FreeTDS};SERVER=10.29.112.3 ;DATABASE=fisrtdb;UID=firstuser;PWD=Giulio2022', autocommit=True)
 cur = conn.cursor()
 
 cursor.execute('''
