@@ -1,9 +1,10 @@
 FROM python:3
 WORKDIR /app
 ADD requirements.txt .
-ADD main.py .#Optional
-ENV https_proxy=http://[proxy]:[port]
-ENV http_proxy=http://[proxy]:[port]
+ADD main.py .
+
+#Optional
+
 # install FreeTDS and dependencies
 RUN apt-get update \
  && apt-get install unixodbc -y \
