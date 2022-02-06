@@ -2,7 +2,7 @@ import pyodbc
 print("About to run C/I build trigger")
 #Add your own SQL Server IP address, PORT, UID, PWD and Database
 conn = pyodbc.connect(
-    'DRIVER={FreeTDS};SERVER=10.29.112.3;PORT=1433;DATABASE=fisrtdb;UID=firstuser;PWD=Giulio2022', autocommit=True)
+    'DRIVER={FreeTDS};SERVER=10.29.112.3;PORT=1433;CHARSET=UTF-8;DATABASE=fisrtdb;UID=firstuser;PWD=Giulio2022', autocommit=True)
 cur = conn.cursor()
 
 cursor.execute('''
