@@ -1,4 +1,6 @@
-FROM python:3WORKDIR /appADD requirements.txt .
+FROM python:3
+WORKDIR /app
+ADD requirements.txt .
 ADD main.py .#Optional
 ENV https_proxy=http://[proxy]:[port]
 ENV http_proxy=http://[proxy]:[port]# install FreeTDS and dependencies
