@@ -55,9 +55,9 @@ def test_sql():
     s = "<table style='border:1px solid red'>"    
     for row in cursor.fetchall():    
         s = s + "<tr>"    
-    for x in row:    
-        s = s + "<td>" + str(x) + "</td>"    
-    s = s + "</tr>"    
+        for x in row:    
+            s = s + "<td>" + str(x) + "</td>"    
+        s = s + "</tr>"    
     connection.close()    
     return "<html><body>" + s + "</body></html>"  
 
