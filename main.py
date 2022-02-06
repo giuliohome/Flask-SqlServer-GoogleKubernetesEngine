@@ -53,7 +53,7 @@ def test_sql():
     cursor = connection.cursor()    
     cursor.execute("SELECT * FROM products")    
     s = "<table style='border:1px solid red'>"    
-    for row in cursor:    
+    for row in cursor.fetchall():    
         s = s + "<tr>"    
     for x in row:    
         s = s + "<td>" + str(x) + "</td>"    
