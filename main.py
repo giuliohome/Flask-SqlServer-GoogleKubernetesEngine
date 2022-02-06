@@ -45,5 +45,21 @@ def sqlconnect():
     cursor.close()
     conn.close()
 
+@app.route("/sql")
+def test_sql():
+    # creating connection Object which will contain SQL Server Connection    
+    connection = pyodbc.connect('DRIVER={FreeTDS};SERVER=10.29.112.3;PORT=1433;DATABASE=firstdb;UID=sqlserver;PWD=Giulio2022')# Creating Cursor    
+        
+    cursor = connection.cursor()    
+    cursor.execute("SELECT * FROM products")    
+    s = "<table style='border:1px solid red'>"    
+    for row in cursor:    
+        s = s + "<tr>"    
+    for x in row:    
+        s = s + "<td>" + str(x) + "</td>"    
+    s = s + "</tr>"    
+    connection.close()    
+    return "<html><body>" + s + "</body></html>"  
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
