@@ -49,7 +49,7 @@ def sqlconnect():
 def test_sql():
     # creating connection Object which will contain SQL Server Connection    
     connection = pyodbc.connect('DRIVER={FreeTDS};SERVER=10.29.112.3;PORT=1433;DATABASE=firstdb;UID=sqlserver;PWD=Giulio2022')# Creating Cursor    
-        
+    connection.timeout = 30
     cursor = connection.cursor()    
     cursor.execute("SELECT * FROM products")    
     s = "<table style='border:1px solid red'>"    
