@@ -19,7 +19,8 @@ const appImage = new docker.Image("flask-sqlserer-app", {
 });
 
 // Deploy the app container as a Kubernetes load balanced service.
-const appPort = 3000;
+const appPort = 80;
+const targetPort = 5000;
 const appLabels = { app: "flask-sqlserver-app" };
 const appDeployment = new k8s.apps.v1.Deployment("flask-deployment", {
     spec: {
@@ -46,7 +47,7 @@ const appService = new k8s.core.v1.Service("flask-service", {
     metadata: { labels: appDeployment.metadata.labels },
     spec: {
         type: "LoadBalancer",
-        ports: [{ port: appPort, targetPort: appPort }],
+        ports: [{ port: appPort, targetPort: targetPort }],
         selector: appDeployment.spec.template.metadata.labels,
     },
 }, { provider: cluster.provider });
