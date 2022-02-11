@@ -1,0 +1,16 @@
+name: gcp-flask-sqlserver
+runtime: nodejs
+description: A containerized Flask app using managed Kubernetes and SQL Server
+template:
+  config:
+    gcp:project:
+      description: The Google Cloud project to deploy into
+    gcp:zone:
+      description: The Google Cloud zone
+      default: us-west1-a
+    clusterPassword:
+      description: Your new cluster password
+      secret: true
+    dbPassword:
+      description: Your new DB password
+      secret: true

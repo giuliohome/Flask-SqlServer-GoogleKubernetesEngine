@@ -1,0 +1,13 @@
+{
+    "name": "gcp-flask-sqlserver",
+    "devDependencies": {
+        "@types/node": "^8.0.0"
+    },
+    "dependencies": {
+        "@pulumi/docker": "^2.0.0",
+        "@pulumi/gcp": "^4.0.0",
+        "@pulumi/kubernetes": "^2.0.0",
+        "@pulumi/pulumi": "^2.0.0"
+    }
+}
+
