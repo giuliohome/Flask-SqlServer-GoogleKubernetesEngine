@@ -2,7 +2,7 @@ config:
   gcp-flask-sqlserver:clusterPassword:
     secure: AAABANjCV3sM59hYuir4sQYutrmMw9pHrK5uYfI3YyDwb+8ODQO/8O2UaJe5/Ix91ao3
   gcp-flask-sqlserver:dbPassword:
-    secure: AAABAJKSU5WBDXFdFQzYs09ES/nBtOnDlGtVD58Lzr4zKTFfjYIQio0ouEbKvg==
+    secure: AAABAAUQAb/IwSbOd9blQTnV3LXlhEw2m6WWEyx+TjbisCkseVbd6K8NlE2VxQ==
   gcp-flask-sqlserver:dbUsername: sqlserver
   gcp-flask-sqlserver:dockerPassword:
     secure: AAABAEN6X346ImseqE2YaV4wkMQrmaOXuWKCPmIwYDgYOmi9awRg8XK2Tp8M3gA=

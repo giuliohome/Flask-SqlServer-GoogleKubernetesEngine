@@ -13,7 +13,7 @@ def sqlconnect():
     print("About to conn")
     #Add your own SQL Server IP address, PORT, UID, PWD and Database
     conn = pyodbc.connect(
-            'DRIVER={FreeTDS};SERVER=' + os.environ['DB_HOST'] + ';PORT=1433;DATABASE=firstdb;UID=' + os.environ['DB_USERNAME'] +  ';PWD=' + os.environ['DB_PASSWORD'] , autocommit=False)
+            'DRIVER={FreeTDS};SERVER=' + os.environ['DB_HOST'] + ';PORT=1433;DATABASE=model;UID=' + os.environ['DB_USERNAME'] +  ';PWD=' + os.environ['DB_PASSWORD'] , autocommit=False)
 
     conn.setencoding('utf-8')
 
@@ -50,7 +50,7 @@ def sqlconnect():
 def test_sql():
     # creating connection Object which will contain SQL Server Connection    
     connection = pyodbc.connect(
-            'DRIVER={FreeTDS};SERVER=' + os.environ['DB_HOST'] + ';PORT=1433;DATABASE=firstdb;UID=' + os.environ['DB_USERNAME'] +  ';PWD=' + os.environ['DB_PASSWORD'] , autocommit=False)
+            'DRIVER={FreeTDS};SERVER=' + os.environ['DB_HOST'] + ';PORT=1433;DATABASE=model;UID=' + os.environ['DB_USERNAME'] +  ';PWD=' + os.environ['DB_PASSWORD'] , autocommit=False)
     # Creating Cursor    
     connection.timeout = 30
     cursor = connection.cursor()    
