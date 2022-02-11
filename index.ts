@@ -21,7 +21,7 @@ const appImage = new docker.Image("flask-sqlserer-app", {
 // Deploy the app container as a Kubernetes load balanced service.
 const appPort = 3000;
 const appLabels = { app: "flask-sqlserver-app" };
-const appDeployment = new k8s.apps.v1.Deployment("rails-deployment", {
+const appDeployment = new k8s.apps.v1.Deployment("flask-deployment", {
     spec: {
         selector: { matchLabels: appLabels },
         replicas: 1,
