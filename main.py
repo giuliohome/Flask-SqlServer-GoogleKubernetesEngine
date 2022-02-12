@@ -15,13 +15,13 @@ def sqlconnect():
     #Add your own SQL Server IP address, PORT, UID, PWD and Database
     conn = pyodbc.connect(
             'DRIVER={FreeTDS};SERVER=' + os.environ['DB_HOST'] + ';PORT=1433;DATABASE=master;UID=' + os.environ['DB_USERNAME'] +  ';PWD=' + os.environ['DB_PASSWORD'] , autocommit=False)
-
-    conn.setencoding('utf-8')
+    # Creating Cursor    
+    conn.timeout = 30
 
     cursor = conn.cursor()
 
     cursor.execute('''
-            CREATE TABLE ##products (
+            CREATE TABLE appdb.dbo.products (
                 product_id int primary key,
                 product_name nvarchar(50),
                 price int
@@ -31,7 +31,7 @@ def sqlconnect():
     conn.commit()
 
     cursor.execute('''
-            INSERT INTO ##products (product_id, product_name, price)
+            INSERT INTO  appdb.dbo.products(product_id, product_name, price)
             VALUES
                 (1,'Desktop Computer',800),
                 (2,'Laptop',1200),
@@ -46,6 +46,7 @@ def sqlconnect():
     print('Should have inserted the rows above')
     cursor.close()
     conn.close()
+    return "SQL setup/migration finished"
 
 @app.route("/sql")
 def test_sql():
@@ -55,7 +56,7 @@ def test_sql():
     # Creating Cursor    
     connection.timeout = 30
     cursor = connection.cursor()    
-    cursor.execute("SELECT * FROM ##products")    
+    cursor.execute("SELECT * FROM appdb.dbo.products")    
     s = "<table style='border:1px solid red'>"    
     for row in cursor.fetchall():    
         s = s + "<tr>"    

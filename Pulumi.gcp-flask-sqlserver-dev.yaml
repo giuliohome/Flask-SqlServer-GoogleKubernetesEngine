@@ -1,11 +1,11 @@
 config:
   gcp-flask-sqlserver:clusterPassword:
-    secure: AAABANjCV3sM59hYuir4sQYutrmMw9pHrK5uYfI3YyDwb+8ODQO/8O2UaJe5/Ix91ao3
+    secure: AAABAKUDUgm2XwKAbvdxbJI74g/xxPOLye74gcefCfss9+oexZFssYtxprUNY2eb4CqU
   gcp-flask-sqlserver:dbPassword:
-    secure: AAABAAUQAb/IwSbOd9blQTnV3LXlhEw2m6WWEyx+TjbisCkseVbd6K8NlE2VxQ==
+    secure: AAABAOB9S7B8jFFfyEdaW6kit/NHIIcoVZWLDhBb9pEwKgUztfX9POzLhrNffg==
   gcp-flask-sqlserver:dbUsername: sqlserver
   gcp-flask-sqlserver:dockerPassword:
-    secure: AAABAEN6X346ImseqE2YaV4wkMQrmaOXuWKCPmIwYDgYOmi9awRg8XK2Tp8M3gA=
+    secure: AAABAOMgWgTQt15sfOxEwzsvG9CkRBHhUyY5iVXRvlXacy08UxwHdjuBr3Su0tM=
   gcp-flask-sqlserver:dockerUsername: giuliohome
   gcp-flask-sqlserver:masterVersion: latest
   gcp:project: mypulumi
