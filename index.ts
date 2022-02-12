@@ -8,7 +8,7 @@ import * as config from "./config";
 import * as db from "./db";
 
 // Get the Docker Hub  repository for our app container, and build and publish the app image.
-const appImage = new docker.Image("flask-sqlserer-app", {
+const appImage = new docker.Image("flask-sqlsverer-app", {
     imageName: `${config.dockerUsername}/${pulumi.getProject()}_${pulumi.getStack()}`,
     build: ".",
     registry: {

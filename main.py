@@ -8,19 +8,20 @@ app = Flask(__name__)
 def home():
     return "hello world"
 
-
+@app.route("/setup")
 def sqlconnect():
+
     print("About to conn")
     #Add your own SQL Server IP address, PORT, UID, PWD and Database
     conn = pyodbc.connect(
-            'DRIVER={FreeTDS};SERVER=' + os.environ['DB_HOST'] + ';PORT=1433;DATABASE=model;UID=' + os.environ['DB_USERNAME'] +  ';PWD=' + os.environ['DB_PASSWORD'] , autocommit=False)
+            'DRIVER={FreeTDS};SERVER=' + os.environ['DB_HOST'] + ';PORT=1433;DATABASE=master;UID=' + os.environ['DB_USERNAME'] +  ';PWD=' + os.environ['DB_PASSWORD'] , autocommit=False)
 
     conn.setencoding('utf-8')
 
     cursor = conn.cursor()
 
     cursor.execute('''
-            CREATE TABLE products (
+            CREATE TABLE ##products (
                 product_id int primary key,
                 product_name nvarchar(50),
                 price int
@@ -30,7 +31,7 @@ def sqlconnect():
     conn.commit()
 
     cursor.execute('''
-            INSERT INTO products (product_id, product_name, price)
+            INSERT INTO ##products (product_id, product_name, price)
             VALUES
                 (1,'Desktop Computer',800),
                 (2,'Laptop',1200),
@@ -50,11 +51,11 @@ def sqlconnect():
 def test_sql():
     # creating connection Object which will contain SQL Server Connection    
     connection = pyodbc.connect(
-            'DRIVER={FreeTDS};SERVER=' + os.environ['DB_HOST'] + ';PORT=1433;DATABASE=model;UID=' + os.environ['DB_USERNAME'] +  ';PWD=' + os.environ['DB_PASSWORD'] , autocommit=False)
+            'DRIVER={FreeTDS};SERVER=' + os.environ['DB_HOST'] + ';PORT=1433;DATABASE=master;UID=' + os.environ['DB_USERNAME'] +  ';PWD=' + os.environ['DB_PASSWORD'] , autocommit=False)
     # Creating Cursor    
     connection.timeout = 30
     cursor = connection.cursor()    
-    cursor.execute("SELECT * FROM products")    
+    cursor.execute("SELECT * FROM ##products")    
     s = "<table style='border:1px solid red'>"    
     for row in cursor.fetchall():    
         s = s + "<tr>"    
