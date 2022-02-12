@@ -3,7 +3,7 @@ See a similar [pulumi example](https://github.com/pulumi/examples/tree/master/gc
 
 Just do it:
 
-```bash
+```
 cd infra
 npm install
 pulumi up
