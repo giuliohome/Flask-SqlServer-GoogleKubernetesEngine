@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "hello world"
+    return "hello from Google Cloud Run"
 
 @app.route("/setup")
 def sqlconnect():
