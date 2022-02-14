@@ -8,4 +8,4 @@ npm install
 pulumi up
 ```
 
-[Gooogle Cloud Build]( https://cloud.google.com/cloud-build/) configured for this repository.
+[Gooogle Cloud Build]( https://cloud.google.com/cloud-build/) configured for this repository with CI/CD to Cloud Run.
