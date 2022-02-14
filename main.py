@@ -4,9 +4,10 @@ import pyodbc
 
 app = Flask(__name__)
 
+version = "v.2.0.0 - Cloud Run from Github CI/CD"
 @app.route("/version")
 def version():
-    return version "v.2.0.0 - Cloud Run from Github CI/CD"
+    return version 
 
 @app.route("/")
 def home():
