@@ -10,7 +10,7 @@ def webversion():
 
 @app.route("/")
 def home():
-    return "hello from Google Cloud Run with continuous deployment" # CI/CD trigger
+    return "Google Cloud Run with continuous deployment" # CI/CD trigger
 
 @app.route("/setup")
 def sqlconnect():
