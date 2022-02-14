@@ -8,4 +8,4 @@ npm install
 pulumi up
 ```
 
-[Gooogle Cloud Build]( https://cloud.google.com/cloud-build/) configured for this repository with CI/CD and published as Cloud Run [web app](https://firstrepo-p63nwudoyq-uc.a.run.app/).
+[Gooogle Cloud Build]( https://cloud.google.com/cloud-build/) configured for this repository with CI/CD and published as Cloud Run [web app]https://flask-sqlserver-googlekubernetesengine-p63nwudoyq-uc.a.run.app/).
