@@ -4,10 +4,9 @@ import pyodbc
 
 app = Flask(__name__)
 
-appversion = 'v.2.0.0 - Cloud Run from Github CI/CD'
 @app.route("/version")
 def webversion():
-    return appversion 
+    return "v.2.0.0 - Cloud Run from Github CI/CD" 
 
 @app.route("/")
 def home():
