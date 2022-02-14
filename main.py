@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/version")
 def webversion():
-    return "v.2.0.0 - Cloud Run from Github CI/CD" 
+    return "v.2.0.1 - Cloud Run from mirrored Github CI/CD" 
 
 @app.route("/")
 def home():
