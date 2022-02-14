@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "hello from Google Cloud Run"
+    return "hello from Google Cloud Run" # CI/CD trigger
 
 @app.route("/setup")
 def sqlconnect():
