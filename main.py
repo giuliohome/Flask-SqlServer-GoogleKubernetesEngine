@@ -4,6 +4,10 @@ import pyodbc
 
 app = Flask(__name__)
 
+@app.route("/version")
+def version():
+    return version "v.2.0.0 - Cloud Run from Github CI/CD"
+
 @app.route("/")
 def home():
     return "hello from Google Cloud Run with continuous deployment" # CI/CD trigger
