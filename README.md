@@ -7,3 +7,5 @@ Then, simply do the following:
 npm install
 pulumi up
 ```
+
+[Gooogle Cloud Build]( https://cloud.google.com/cloud-build/) configured for this repository.
