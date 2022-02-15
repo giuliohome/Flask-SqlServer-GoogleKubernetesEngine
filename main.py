@@ -2,6 +2,12 @@ import os
 from flask import Flask
 import pyodbc
 import bucket
+from google.cloud import firestore
+
+# The `project` parameter is optional and represents which project the client
+# will act on behalf of. If not supplied, the client falls back to the default
+# project inferred from the environment.
+db = firestore.Client(project='mypulumi')
 
 app = Flask(__name__)
 
@@ -13,6 +19,22 @@ def webversion():
 @app.route("/")
 def home():
     return "Instead of K8s, Google Cloud Run with continuous deployment from Github!!!" # CI/CD trigger
+
+@app.route("/setdata")
+def nosqlconnect():
+    doc_ref = db.collection(u'users').document(u'alovelace')
+    doc_ref.set({
+        u'first': u'Ada',
+        u'last': u'Lovelace',
+        u'born': 1815
+    })
+    doc_ref.set({
+        u'first': u'Alan',
+        u'middle': u'Mathison',
+        u'last': u'Turing',
+        u'born': 1912
+    })
+    return "NOSQL set data finished"
 
 @app.route("/setup")
 def sqlconnect():
