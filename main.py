@@ -28,6 +28,7 @@ def nosqlconnect():
         u'last': u'Lovelace',
         u'born': 1815
     })
+    doc_ref = db.collection(u'users').document(u'aturing')
     doc_ref.set({
         u'first': u'Alan',
         u'middle': u'Mathison',
