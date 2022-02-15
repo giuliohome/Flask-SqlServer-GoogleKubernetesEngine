@@ -1,12 +1,14 @@
 import os
 from flask import Flask
 import pyodbc
+import bucket
 
 app = Flask(__name__)
 
 @app.route("/version")
 def webversion():
-    return "v.3.0.0 - Cloud Run from Github CI/CD via yaml edit" 
+    appVersion = bucket.download_blob_as_string("mycloud_bucket", "version.txt")
+    return appVersion
 
 @app.route("/")
 def home():
