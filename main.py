@@ -87,7 +87,7 @@ def test_nosql():
         s = s + "<tr>"
         s = s + "<td>" + doc.id + "</td>"     
         for x in doc.to_dict():    
-            s = s + "<td>" + str(x) + "</td>"    
+            s = s + "<td>" + str(x) + ": " + str(doc[x]) + "</td>"    
         s = s + "</tr>"
     return "<html><body>" + s + "</body></html>"
 
