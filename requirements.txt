@@ -2,3 +2,4 @@ pyodbc==4.0.28
 Flask
 gunicorn
 google-cloud-storage
+google-cloud-firestore
