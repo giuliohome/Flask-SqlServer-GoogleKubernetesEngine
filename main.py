@@ -6,11 +6,11 @@ app = Flask(__name__)
 
 @app.route("/version")
 def webversion():
-    return "v.2.0.2 - Cloud Run from Github CI/CD via yaml edit" 
+    return "v.3.0.0 - Cloud Run from Github CI/CD via yaml edit" 
 
 @app.route("/")
 def home():
-    return "Google Cloud Run with continuous deployment from Github!!!" # CI/CD trigger
+    return "Instead of K8s, Google Cloud Run with continuous deployment from Github!!!" # CI/CD trigger
 
 @app.route("/setup")
 def sqlconnect():
