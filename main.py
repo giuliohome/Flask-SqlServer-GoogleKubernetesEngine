@@ -77,6 +77,20 @@ def sqlconnect():
     conn.close()
     return "SQL setup/migration finished"
 
+@app.route("/nosql")
+def test_nosql():
+    users_ref = db.collection(u'users')
+    docs = users_ref.stream()
+    s = "<table style='border:1px solid red'>"
+    for doc in docs:
+        print(f'{doc.id} => {doc.to_dict()}')
+        s = s + "<tr>"
+        s = s + "<td>" + doc.id + "</td>"     
+        for x in doc.to_dict():    
+            s = s + "<td>" + str(x) + "</td>"    
+        s = s + "</tr>"
+    return "<html><body>" + s + "</body></html>"
+
 @app.route("/sql")
 def test_sql():
     # creating connection Object which will contain SQL Server Connection    
