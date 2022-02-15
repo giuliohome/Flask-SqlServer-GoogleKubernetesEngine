@@ -83,11 +83,12 @@ def test_nosql():
     docs = users_ref.stream()
     s = "<table style='border:1px solid red'>"
     for doc in docs:
-        print(f'{doc.id} => {doc.to_dict()}')
+        docDict = doc.to_dict()
+        print(f'{doc.id} => {docDict}')
         s = s + "<tr>"
         s = s + "<td>" + doc.id + "</td>"     
-        for x in doc.to_dict():    
-            s = s + "<td>" + str(x) + ": " + str(doc[x]) + "</td>"    
+        for x in docDict:    
+            s = s + "<td>" + str(x) + ": " + str(docDict[x]) + "</td>"    
         s = s + "</tr>"
     return "<html><body>" + s + "</body></html>"
 
