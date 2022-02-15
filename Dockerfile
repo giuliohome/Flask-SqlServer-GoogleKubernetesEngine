@@ -2,6 +2,7 @@ FROM python:3
 WORKDIR /app
 ADD requirements.txt .
 ADD main.py .
+ADD bucket.py .
 
 #Optional
 
