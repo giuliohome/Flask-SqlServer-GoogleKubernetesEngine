@@ -15,7 +15,7 @@ yarn install
 pulumi login
 
 # Select the appropriate stack.
-pulumi stack select giuliohome/gcp-typescript/gcp-dev
+pulumi stack select giuliohome/gcp-flask-sqlserver/dev
 
 case $BUILD_TYPE in
   PullRequest)
