@@ -17,6 +17,17 @@ pulumi login
 # Select the appropriate stack.
 pulumi stack select giuliohome/gcp-flask-sqlserver/dev
 
+set +o history
+pulumi config set gcp:project mypulumi
+pulumi config set gcp:zone us-west1-a
+pulumi config set clusterPassword --secret $CLUSTER_PSWD
+pulumi config set dbUsername dbappadmin
+pulumi config set dbPassword --secret $DB_PSWD
+pulumi config set dockerUsername giuliohome
+pulumi config set dockerPassword --secret $DOCKER_PSWD
+pulumi config set masterVersion latest
+set -o history
+
 case $BUILD_TYPE in
   PullRequest)
       pulumi preview
