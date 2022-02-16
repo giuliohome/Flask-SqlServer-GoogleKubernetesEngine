@@ -10,9 +10,9 @@ export const instance = new gcp.sql.DatabaseInstance("web-db", {
     deletionProtection: false,
     settings: {
 	tier: "db-custom-2-13312",
-        /*ipConfiguration: {
+        ipConfiguration: {
             authorizedNetworks: [{ value: "0.0.0.0/0" }],
-        },*/
+        },
     },
 });
 

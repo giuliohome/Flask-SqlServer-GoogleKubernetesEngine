@@ -54,7 +54,7 @@ def sqladmin():
     conn.commit()
 
 
-    cursor.execute('CREATE LOGIN ' + dbuser  + ' WITH PASSWORD = "' + dbpswd + '"')
+    cursor.execute("CREATE LOGIN " + dbuser  + " WITH PASSWORD = '" + dbpswd + "'")
     conn.commit()
 
     cursor.execute('CREATE USER ' + dbuser  + ' FOR LOGIN ' + dbuser)
