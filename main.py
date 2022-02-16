@@ -18,7 +18,7 @@ def webversion():
 
 @app.route("/")
 def home():
-    return "Instead of K8s, Google Cloud Run with continuous deployment from Github!!!" # CI/CD trigger
+    return "Flask gunicorn. Instead of K8s, Google Cloud Run with continuous deployment from Github!!!" # CI/CD trigger
 
 @app.route("/setdata")
 def nosqlconnect():
@@ -110,5 +110,6 @@ def test_sql():
     connection.close()    
     return "<html><body>" + s + "</body></html>"  
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get("PORT", 8080)))
+# dockerized gunicorn with parametric port 
+# if __name__ == '__main__':
+#    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get("PORT", 8080)))
