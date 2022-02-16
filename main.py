@@ -50,14 +50,17 @@ def sqladmin():
     conn.timeout = 30
 
     cursor = conn.cursor()
-    
-    cursor.execute('CREATE LOGIN ' + dbuser  + ' WITH PASSWORD = ' + dbpswd)
+    cursor.execute('use appdb')
+    conn.commit()
+
+
+    cursor.execute('CREATE LOGIN ' + dbuser  + ' WITH PASSWORD = "' + dbpswd + '"')
     conn.commit()
 
     cursor.execute('CREATE USER ' + dbuser  + ' FOR LOGIN ' + dbuser)
     conn.commit()
     
-    cursor.execute('ALTER SERVER ROLE sysadmin ADD MEMBER ' + dbuser)
+    cursor.execute('GRANT CONTROL ON DATABASE::appdb TO  ' + dbuser)
     conn.commit()
 
     cursor.close()

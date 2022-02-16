@@ -7,6 +7,8 @@ import * as config from "./config";
 export const instance = new gcp.sql.DatabaseInstance("web-db", {
     databaseVersion: "SQLSERVER_2019_STANDARD",
     rootPassword: config.dbPassword,
+    name: "web-db",
+    deletionProtection: false,
     settings: {
 	tier: "db-custom-2-13312",
         /*ipConfiguration: {
