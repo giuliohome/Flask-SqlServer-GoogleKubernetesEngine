@@ -15,7 +15,7 @@ yarn install
 pulumi login
 
 # Select the appropriate stack.
-pulumi stack select gcp-typescript
+pulumi stack select giuliohome/gcp-typescript/gcp-dev
 
 case $BUILD_TYPE in
   PullRequest)
