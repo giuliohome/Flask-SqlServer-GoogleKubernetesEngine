@@ -48,6 +48,11 @@ def sqlconnect():
     conn.timeout = 30
 
     cursor = conn.cursor()
+    dbuser = os.environ['DB_USERNAME']
+    cursor.execute('GRANT ALTER ANY LOGIN TO ' + dbuser  + ' AS CustomerDbRootRole')
+    conn.commit()
+
+    cursor = conn.cursor()
 
     cursor.execute('''
             CREATE TABLE appdb.dbo.products (

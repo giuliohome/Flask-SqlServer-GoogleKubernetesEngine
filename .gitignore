@@ -1,3 +1,4 @@
 /node_modules/
 kubeconfig.yml
 *.pyc
+Pulumi.gcp-flask-sqlserver.yaml

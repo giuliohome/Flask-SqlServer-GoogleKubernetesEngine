@@ -3,7 +3,7 @@
 import * as gcp from "@pulumi/gcp";
 import * as config from "./config";
 
-// Provision a database for our Rails app.
+// Provision a database for our Flask app.
 export const instance = new gcp.sql.DatabaseInstance("web-db", {
     databaseVersion: "SQLSERVER_2019_STANDARD",
     rootPassword: config.dbPassword,
@@ -15,7 +15,9 @@ export const instance = new gcp.sql.DatabaseInstance("web-db", {
     },
 });
 
-// Create a user with the configured credentials for the Rails app to use.
+const database = new gcp.sql.Database("appdb", {instance: instance.name});
+
+// Create a user with the configured credentials for the Flask app to use.
 const user = new gcp.sql.User("web-db-user", {
     instance: instance.name,
     name: config.dbUsername,
