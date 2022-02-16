@@ -37,7 +37,34 @@ def nosqlconnect():
     })
     return "NOSQL set data finished"
 
-@app.route("/setup")
+@app.route("/setup-admin")
+def sqladmin():
+    dbuser = os.environ['DB_USERNAME']
+    dbpswd = os.environ['DB_PASSWORD']
+
+    print("About to conn")
+    #Add your own SQL Server IP address, PORT, UID, PWD and Database
+    conn = pyodbc.connect(
+            'DRIVER={FreeTDS};SERVER=' + os.environ['DB_HOST'] + ';PORT=1433;DATABASE=master;UID=sqlserver;PWD=' + dbpswd , autocommit=False)
+    # Creating Cursor    
+    conn.timeout = 30
+
+    cursor = conn.cursor()
+    
+    cursor.execute('CREATE LOGIN ' + dbuser  + ' WITH PASSWORD = ' + dbpswd)
+    conn.commit()
+
+    cursor.execute('CREATE USER ' + dbuser  + ' FOR LOGIN ' + dbuser)
+    conn.commit()
+    
+    cursor.execute('ALTER SERVER ROLE sysadmin ADD MEMBER ' + dbuser)
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+    return "SQL admin finished"
+
+@app.route("/setup-table")
 def sqlconnect():
 
     print("About to conn")
@@ -48,11 +75,6 @@ def sqlconnect():
     conn.timeout = 30
 
     cursor = conn.cursor()
-    dbuser = os.environ['DB_USERNAME']
-    cursor.execute('GRANT ALTER ANY LOGIN TO ' + dbuser  + ' AS CustomerDbRootRole')
-    conn.commit()
-
-    cursor = conn.cursor()
 
     cursor.execute('''
             CREATE TABLE appdb.dbo.products (
@@ -61,7 +83,6 @@ def sqlconnect():
                 price int
                 )
                 ''')
-
     conn.commit()
 
     cursor.execute('''
@@ -71,8 +92,7 @@ def sqlconnect():
                 (2,'Laptop',1200),
                 (3,'Tablet',200),
                 (4,'Monitor',350),
-                (5,'Printer',150)
-                    ''')
+                (5,'Printer',150)                ''')
     conn.commit()
 
     #This is just an example

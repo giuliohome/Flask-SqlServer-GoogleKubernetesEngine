@@ -9,18 +9,19 @@ export const instance = new gcp.sql.DatabaseInstance("web-db", {
     rootPassword: config.dbPassword,
     settings: {
 	tier: "db-custom-2-13312",
-        ipConfiguration: {
+        /*ipConfiguration: {
             authorizedNetworks: [{ value: "0.0.0.0/0" }],
-        },
+        },*/
     },
 });
 
-const database = new gcp.sql.Database("appdb", {instance: instance.name});
+const database = new gcp.sql.Database("appdb", 
+    {instance: instance.name, name: "appdb"});
 
 // Create a user with the configured credentials for the Flask app to use.
-const user = new gcp.sql.User("web-db-user", {
+/*const user = new gcp.sql.User("web-db-user", {
     instance: instance.name,
     name: config.dbUsername,
     password: config.dbPassword,
-});
+});*/
 
