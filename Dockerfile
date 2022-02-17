@@ -14,7 +14,6 @@ RUN apt-get update \
  && apt-get install freetds-bin -y \
  && apt-get install tdsodbc -y \
  && apt-get install --reinstall build-essential -y
- && apt get install docker -y
 # populate "ocbcinst.ini" as this is where ODBC driver config sits
 RUN echo "[FreeTDS]\n\
 Description = FreeTDS Driver\n\
