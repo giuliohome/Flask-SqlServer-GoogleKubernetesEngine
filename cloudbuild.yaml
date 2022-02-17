@@ -1,0 +1,18 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '-t'
+      - giuliohome/gcp-flask-sqlserver-k8s
+      - .
+  - name: gcr.io/cloud-builders/yarn
+    env:
+      - PULUMI_ACCESS_TOKEN=$_PULUMI_ACCESS_TOKEN
+      - BUILD_TYPE=COMMIT
+      - CLUSTER_PSWD=_CLUSTER_PSWD
+      - DB_PSWD=_DB_PSWD
+      - DOCKER_PSWD=_DOCKER_PSWD
+    args:
+      - '-c'
+      - chmod +x *.sh && ./pulumi.sh
+    entrypoint: /bin/sh
