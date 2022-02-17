@@ -9,11 +9,11 @@ import * as db from "./db";
 
 // Get the Docker Hub  repository for our app container, and build and publish the app image.
 const appImage = new docker.Image("flask-sqlsverer-app", {
-    imageName: `${config.dockerUsername}/gcp-flask-sqlserver-k8s-dev`,
+    imageName: "giuliohome/gcp-flask-sqlserver-k8s-dev",
     build: ".",
     registry: {
         server: "docker.io",
-        username: config.dockerUsername,
+        username: "giuliohome",
         password: config.dockerPassword,
     },
 });
