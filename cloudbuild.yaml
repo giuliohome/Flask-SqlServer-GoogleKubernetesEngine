@@ -5,11 +5,11 @@ steps:
       - '-t'
       - giuliohome/gcp-flask-sqlserver-k8s
       - .
-  - name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
-    args: ['-c', 'docker login --username=giuliohome --password=$$DOCKER_PSWD']
     env:
       - DOCKER_PSWD=_DOCKER_PSWD
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: ['-c', 'docker login --username=giuliohome --password=$DOCKER_PSWD']
   - name: gcr.io/cloud-builders/docker
     args:
       - push
