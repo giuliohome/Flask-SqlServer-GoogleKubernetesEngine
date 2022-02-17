@@ -8,7 +8,7 @@ steps:
   - name: gcr.io/cloud-builders/docker
     args:
       - push
-      - giuliohome/gcp-flask-sqlserver-k8s-dev:latest
+      - giuliohome/gcp-flask-sqlserver-k8s:latest
   - name: gcr.io/cloud-builders/yarn
     env:
       - PULUMI_ACCESS_TOKEN=$_PULUMI_ACCESS_TOKEN
