@@ -18,3 +18,5 @@ pulumi up
 ## Continuous Delivery
 
 with `pulumi.sh` and `cloudbuild.yaml`, CD is fully automated.
+
+Start with `pulumi stack init dev` and configure the secret passwords substitution in the build trigger, then enjoy the CI/CD full automation for a complete Kubernetes Cluster.
