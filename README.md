@@ -13,3 +13,8 @@ pulumi up
 ## Alternative, simplified Cloud Run
 
 [Gooogle Cloud Build]( https://cloud.google.com/cloud-build/) configured for this repository with CI/CD and published as Cloud Run [web app](https://flask-sqlserver-cloudrun-p63nwudoyq-uc.a.run.app/).
+
+
+## Continuous Delivery
+
+with `pulumi.sh` and `cloudbuild.yaml`, CD is fully automated.
