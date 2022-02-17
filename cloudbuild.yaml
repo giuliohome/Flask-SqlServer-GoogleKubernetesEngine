@@ -16,3 +16,4 @@ steps:
       - '-c'
       - chmod +x *.sh && ./pulumi.sh
     entrypoint: /bin/sh
+timeout: 1800s
