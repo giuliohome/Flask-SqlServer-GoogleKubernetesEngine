@@ -9,7 +9,7 @@ steps:
     entrypoint: 'bash'
     args: ['-c', 'docker login --username=giuliohome --password=$$DOCKER_PSWD']
     env:
-      - DOCKER_PSWD=_DOCKER_PSWD
+      - DOCKER_PSWD=$_DOCKER_PSWD
   - name: gcr.io/cloud-builders/docker
     args:
       - push
@@ -18,8 +18,8 @@ steps:
     env:
       - PULUMI_ACCESS_TOKEN=$_PULUMI_ACCESS_TOKEN
       - BUILD_TYPE=COMMIT
-      - CLUSTER_PSWD=_CLUSTER_PSWD
-      - DB_PSWD=_DB_PSWD
+      - CLUSTER_PSWD=$_CLUSTER_PSWD
+      - DB_PSWD=$_DB_PSWD
     args:
       - '-c'
       - chmod +x *.sh && ./pulumi.sh
