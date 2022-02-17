@@ -28,11 +28,4 @@ pulumi config set dockerPassword --secret $DOCKER_PSWD
 pulumi config set masterVersion latest
 set -o history
 
-case $BUILD_TYPE in
-  PullRequest)
-      pulumi preview
-    ;;
-  *)
-      pulumi up --yes
-    ;;
-esac
+pulumi up --yes
