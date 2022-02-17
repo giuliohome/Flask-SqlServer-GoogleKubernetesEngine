@@ -8,7 +8,15 @@ import * as config from "./config";
 import * as db from "./db";
 
 // Get the Docker Hub  repository for our app container, and build and publish the app image.
-
+const appImage = new docker.Image("flask-sqlsverer-app", {
+    imageName: `${config.dockerUsername}/${pulumi.getProject()}_${pulumi.getStack()}`,
+    build: ".",
+    registry: {
+        server: "docker.io",
+        username: config.dockerUsername,
+        password: config.dockerPassword,
+    },
+});
 
 // Deploy the app container as a Kubernetes load balanced service.
 const appPort = 80;
@@ -22,7 +30,7 @@ const appDeployment = new k8s.apps.v1.Deployment("flask-deployment", {
             metadata: { labels: appLabels },
             spec: {
                 containers: [{
-                    name: "flask-sqlserver-app",
+                    name: appImage.imageName,
                     image: "giuliohome/gcp-flask-sqlserver-k8s-dev",
                     env: [
                         { name: "DB_HOST", value: db.instance.firstIpAddress },
