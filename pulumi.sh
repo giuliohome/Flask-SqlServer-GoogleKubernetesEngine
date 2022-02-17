@@ -28,7 +28,7 @@ pulumi config set dockerPassword --secret $DOCKER_PSWD
 pulumi config set masterVersion latest
 set -o history
 
-sudo curl -sSL https://get.docker.com/ | sh
+curl -sSL https://get.docker.com/ | sh
 docker build . -t giuliohome/gcp-flask-sqlserver-k8s
 
 pulumi up --yes
