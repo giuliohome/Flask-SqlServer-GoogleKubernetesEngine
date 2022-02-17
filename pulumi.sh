@@ -28,8 +28,8 @@ pulumi config set dockerPassword --secret $DOCKER_PSWD
 pulumi config set masterVersion latest
 set -o history
 
-apt-get update
-apt-get install docker -y
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
 docker build . -t giuliohome/gcp-flask-sqlserver-k8s
 
 pulumi up --yes
