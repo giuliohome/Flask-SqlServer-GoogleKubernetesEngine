@@ -5,6 +5,10 @@ steps:
       - '-t'
       - giuliohome/gcp-flask-sqlserver-k8s
       - .
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - giuliohome/gcp-flask-sqlserver-k8s-dev:latest
   - name: gcr.io/cloud-builders/yarn
     env:
       - PULUMI_ACCESS_TOKEN=$_PULUMI_ACCESS_TOKEN
