@@ -17,12 +17,12 @@ export const instance = new gcp.sql.DatabaseInstance("web-db", {
 });
 
 const database = new gcp.sql.Database("appdb", 
-    {instance: instance.name, name: "appdb"});
+    {instance: instance.name, name: config.dbUsername}); // postgres default db: same as user
 
 // Create a user with the configured credentials for the Flask app to use.
-/*const user = new gcp.sql.User("web-db-user", {
+const user = new gcp.sql.User("web-db-user", {
     instance: instance.name,
     name: config.dbUsername,
     password: config.dbPassword,
-});*/
+});
 
