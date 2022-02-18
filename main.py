@@ -46,7 +46,7 @@ def sqlconnect():
       host=os.environ['DB_HOST'],
       database=os.environ['DB_USERNAME'],
       user='dbappadmin',
-      password=os.environ['DB_PSWD'])
+      password=os.environ['DB_PASSWORD'])
 
     cursor = conn.cursor()
 
@@ -98,7 +98,7 @@ def test_sql():
       host=os.environ['DB_HOST'],
       database=os.environ['DB_USERNAME'],
       user='dbappadmin',
-      password=os.environ['DB_PSWD'])
+      password=os.environ['DB_PASSWORD'])
     cursor = conn.cursor()    
     cursor.execute("SELECT * FROM products;")    
     s = "<table style='border:1px solid red'>"    
