@@ -22,6 +22,7 @@ import * as db from "./db";
 const appPort = 80;
 const targetPort = 5000;
 const appLabels = { app: "flask-postgres-app" };
+const deploymentVersion = "flask-postgres-app-v2-1";
 const appDeployment = new k8s.apps.v1.Deployment("flask-deployment", {
     spec: {
         selector: { matchLabels: appLabels },
@@ -30,7 +31,7 @@ const appDeployment = new k8s.apps.v1.Deployment("flask-deployment", {
             metadata: { labels: appLabels },
             spec: {
                 containers: [{
-                    name: "flask-postgres-app-v2-1",
+                    name: deploymentVersion,
                     image: "giuliohome/gcp-flask-sqlserver-k8s:latest",
                     env: [
                         { name: "DB_HOST", value: db.instance.firstIpAddress },
