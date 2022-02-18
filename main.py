@@ -99,7 +99,7 @@ def test_sql():
       database=os.environ['DB_USERNAME'],
       user='dbappadmin',
       password=os.environ['DB_PSWD'])
-    cursor = connection.cursor()    
+    cursor = conn.cursor()    
     cursor.execute("SELECT * FROM products;")    
     s = "<table style='border:1px solid red'>"    
     for row in cursor.fetchall():    
@@ -107,7 +107,7 @@ def test_sql():
         for x in row:    
             s = s + "<td>" + str(x) + "</td>"    
         s = s + "</tr>"    
-    connection.close()    
+    conn.close()    
     return "<html><body>" + s + "</body></html>"  
 
 # dockerized gunicorn with parametric port 
