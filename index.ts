@@ -30,7 +30,7 @@ const appDeployment = new k8s.apps.v1.Deployment("flask-deployment", {
             metadata: { labels: appLabels },
             spec: {
                 containers: [{
-                    name: "flask-postgres-app",
+                    name: "flask-postgres-app-v2.1",
                     image: "giuliohome/gcp-flask-sqlserver-k8s:latest",
                     env: [
                         { name: "DB_HOST", value: db.instance.firstIpAddress },
