@@ -18,7 +18,7 @@ def webversion():
 
 @app.route("/")
 def home():
-    return "Flask gunicorn. Instead of K8s, Google Cloud Run with continuous deployment from Github!!!" # CI/CD trigger
+    return "Flask gunicorn + Postgres DB Server. Google Cloud Kubernetes with continuous deployment from Github!!!" # CI/CD trigger
 
 @app.route("/setdata")
 def nosqlconnect():

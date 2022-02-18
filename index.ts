@@ -22,7 +22,7 @@ import * as db from "./db";
 const appPort = 80;
 const targetPort = 5000;
 
-const deploymentVersion = "-v2-3";
+const deploymentVersion = "-v2-4";
 const appLabel = "flask-postgres-app" + deploymentVersion;
 const appLabels = { app: appLabel};
 const appDeployment = new k8s.apps.v1.Deployment("flask-deployment" + deploymentVersion , {
