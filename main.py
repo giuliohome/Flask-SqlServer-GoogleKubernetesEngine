@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-import pyodbc
+import psycopg2
 import bucket
 from google.cloud import firestore
 
@@ -37,54 +37,25 @@ def nosqlconnect():
     })
     return "NOSQL set data finished"
 
-@app.route("/setup-admin")
-def sqladmin():
-    dbuser = os.environ['DB_USERNAME']
-    dbpswd = os.environ['DB_PASSWORD']
-
-    print("About to conn")
-    #Add your own SQL Server IP address, PORT, UID, PWD and Database
-    conn = pyodbc.connect(
-            'DRIVER={FreeTDS};SERVER=' + os.environ['DB_HOST'] + ';PORT=1433;DATABASE=master;UID=sqlserver;PWD=' + dbpswd , autocommit=False)
-    # Creating Cursor    
-    conn.timeout = 30
-
-    cursor = conn.cursor()
-    cursor.execute('use appdb')
-    conn.commit()
-
-
-    cursor.execute("CREATE LOGIN " + dbuser  + " WITH PASSWORD = '" + dbpswd + "'")
-    conn.commit()
-
-    cursor.execute('CREATE USER ' + dbuser  + ' FOR LOGIN ' + dbuser)
-    conn.commit()
-    
-    cursor.execute('GRANT CONTROL ON DATABASE::appdb TO  ' + dbuser)
-    conn.commit()
-
-    cursor.close()
-    conn.close()
-    return "SQL admin finished"
-
 @app.route("/setup-table")
 def sqlconnect():
 
     print("About to conn")
-    #Add your own SQL Server IP address, PORT, UID, PWD and Database
-    conn = pyodbc.connect(
-            'DRIVER={FreeTDS};SERVER=' + os.environ['DB_HOST'] + ';PORT=1433;DATABASE=master;UID=' + os.environ['DB_USERNAME'] +  ';PWD=' + os.environ['DB_PASSWORD'] , autocommit=False)
-    # Creating Cursor    
-    conn.timeout = 30
+    #Add your own Postgres Server IP address, PORT, UID, PWD and Database
+    conn = psycopg2.connect(
+      host=os.environ['DB_HOST'],
+      database=os.environ['DB_USERNAME'],
+      user=os.environ['DB_USERNAME'],
+      password=os.environ['DB_PASSWORD'])
 
     cursor = conn.cursor()
 
     cursor.execute('''
             CREATE TABLE appdb.dbo.products (
                 product_id int primary key,
-                product_name nvarchar(50),
+                product_name varchar(50),
                 price int
-                )
+                );
                 ''')
     conn.commit()
 
@@ -95,7 +66,7 @@ def sqlconnect():
                 (2,'Laptop',1200),
                 (3,'Tablet',200),
                 (4,'Monitor',350),
-                (5,'Printer',150)                ''')
+                (5,'Printer',150);                ''')
     conn.commit()
 
     #This is just an example
@@ -122,13 +93,14 @@ def test_nosql():
 
 @app.route("/sql")
 def test_sql():
-    # creating connection Object which will contain SQL Server Connection    
-    connection = pyodbc.connect(
-            'DRIVER={FreeTDS};SERVER=' + os.environ['DB_HOST'] + ';PORT=1433;DATABASE=master;UID=' + os.environ['DB_USERNAME'] +  ';PWD=' + os.environ['DB_PASSWORD'] , autocommit=False)
-    # Creating Cursor    
-    connection.timeout = 30
+    # creating connection Object which will contain Postgres Connection
+    conn = psycopg2.connect(
+      host=os.environ['DB_HOST'],
+      database=os.environ['DB_USERNAME'],
+      user=os.environ['DB_USERNAME'],
+      password=os.environ['DB_PASSWORD'])
     cursor = connection.cursor()    
-    cursor.execute("SELECT * FROM appdb.dbo.products")    
+    cursor.execute("SELECT * FROM appdb.dbo.products;")    
     s = "<table style='border:1px solid red'>"    
     for row in cursor.fetchall():    
         s = s + "<tr>"    
