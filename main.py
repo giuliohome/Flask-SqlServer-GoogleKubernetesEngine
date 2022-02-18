@@ -51,7 +51,7 @@ def sqlconnect():
     cursor = conn.cursor()
 
     cursor.execute('''
-            CREATE TABLE appdb.dbo.products (
+            CREATE TABLE products (
                 product_id int primary key,
                 product_name varchar(50),
                 price int
@@ -60,7 +60,7 @@ def sqlconnect():
     conn.commit()
 
     cursor.execute('''
-            INSERT INTO  appdb.dbo.products(product_id, product_name, price)
+            INSERT INTO  products(product_id, product_name, price)
             VALUES
                 (1,'Desktop Computer',800),
                 (2,'Laptop',1200),
@@ -100,7 +100,7 @@ def test_sql():
       user=os.environ['DB_USERNAME'],
       password=os.environ['DB_PASSWORD'])
     cursor = connection.cursor()    
-    cursor.execute("SELECT * FROM appdb.dbo.products;")    
+    cursor.execute("SELECT * FROM products;")    
     s = "<table style='border:1px solid red'>"    
     for row in cursor.fetchall():    
         s = s + "<tr>"    
