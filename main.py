@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 @app.route("/version")
 def webversion():
-    appVersion = bucket.download_blob_as_string("mycloud_bucket", "version.txt")
+    appVersion = "gunicorn + posgres db on Kubernetes" // bucket.download_blob_as_string("mycloud_bucket", "version.txt")
     return appVersion
 
 @app.route("/")
