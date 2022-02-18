@@ -5,11 +5,11 @@ import * as config from "./config";
 
 // Provision a database for our Flask app.
 export const instance = new gcp.sql.DatabaseInstance("web-db", {
-    databaseVersion: "SQLSERVER_2019_STANDARD",
+    databaseVersion: "POSTGRES_13",
     rootPassword: config.dbPassword,
     deletionProtection: false,
     settings: {
-	tier: "db-custom-2-13312",
+	tier: "db-f1-micro",
         ipConfiguration: {
             authorizedNetworks: [{ value: "0.0.0.0/0" }],
         },
