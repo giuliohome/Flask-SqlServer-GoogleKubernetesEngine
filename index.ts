@@ -21,7 +21,7 @@ import * as db from "./db";
 // Deploy the app container as a Kubernetes load balanced service.
 const appPort = 80;
 const targetPort = 5000;
-const appLabels = { app: "flask-sqlserver-app" };
+const appLabels = { app: "flask-postgres-app" };
 const appDeployment = new k8s.apps.v1.Deployment("flask-deployment", {
     spec: {
         selector: { matchLabels: appLabels },
@@ -30,7 +30,7 @@ const appDeployment = new k8s.apps.v1.Deployment("flask-deployment", {
             metadata: { labels: appLabels },
             spec: {
                 containers: [{
-                    name: "flask-sqlserver-app",
+                    name: "flask-postgres-app",
                     image: "giuliohome/gcp-flask-sqlserver-k8s",
                     env: [
                         { name: "DB_HOST", value: db.instance.firstIpAddress },
