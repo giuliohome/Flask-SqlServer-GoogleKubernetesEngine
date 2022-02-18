@@ -107,7 +107,7 @@ def test_sql():
         for x in row:    
             s = s + "<td>" + str(x) + "</td>"    
         s = s + "</tr>"    
-    connection.close()    
+    conn.close()    
     return "<html><body>" + s + "</body></html>"  
 
 # dockerized gunicorn with parametric port 
