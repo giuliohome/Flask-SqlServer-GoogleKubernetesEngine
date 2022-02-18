@@ -45,8 +45,8 @@ def sqlconnect():
     conn = psycopg2.connect(
       host=os.environ['DB_HOST'],
       database=os.environ['DB_USERNAME'],
-      user=os.environ['DB_USERNAME'],
-      password=os.environ['DB_PASSWORD'])
+      user='dbappadmin',
+      password=os.environ['DB_PSWD'])
 
     cursor = conn.cursor()
 
@@ -97,8 +97,8 @@ def test_sql():
     conn = psycopg2.connect(
       host=os.environ['DB_HOST'],
       database=os.environ['DB_USERNAME'],
-      user=os.environ['DB_USERNAME'],
-      password=os.environ['DB_PASSWORD'])
+      user='dbappadmin',
+      password=os.environ['DB_PSWD'])
     cursor = connection.cursor()    
     cursor.execute("SELECT * FROM products;")    
     s = "<table style='border:1px solid red'>"    
